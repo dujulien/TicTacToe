@@ -14,7 +14,7 @@ class Board
 		end
 	end
 
-
+	#Check if there is a win combination : return true if yes, false if no
 	def wins_combinations?
 		wins_combinations = [
 			[@board_array[0],@board_array[1],@board_array[2]], 
@@ -35,7 +35,7 @@ class Board
 		return win
 	end
 
-
+	#Check if tictactoe grid is full
 	def is_full?
 		i = 0
 		full = true

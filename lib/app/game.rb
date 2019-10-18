@@ -14,45 +14,31 @@ class Game
 		@player2 = Player.new(name2, "O")
 	end
 
-
-	# def who_begins?
-	# 	dice = rand(1..2)
-	# 	if dice == 1
-	# 		ask_player_to_play(@player1)
-	# 	else
-	# 		ask_player_to_play(@player2)
-	# 	end
-	# end 
-
-
+	#Display messages to ask the player to play
 	def ask_player_to_play(player)
 		puts ""
 		puts "Au tour de #{player.name} de jouer !"
 		print "#{player.name}, sélectionne une case : "
 	end
 
-
+	#Replace player's symbol in boardcase's value according to its position given in entry
 	def player_move(player, position) 
 		@board.board_array.each{|b_case| b_case.value = player.symbol if b_case.position == position}
 	end
 
-
+	#Boolean to check if there is a winner
 	def is_there_a_winner?
 		return @board.wins_combinations?
 	end
 
-
+	#Boolean to check if there is a draw
 	def is_draw?
 		return (@board.is_full? && !@board.wins_combinations?)
 	end
 
-
+	#Boolean to check if game is still ongoing (no draw and no winner)
 	def is_still_ongoing?
-		if is_there_a_winner? == false && is_draw? == false
-			return true
-		else
-			return false
-		end
+		return is_there_a_winner? == false && is_draw? == false
 	end
 
 end
